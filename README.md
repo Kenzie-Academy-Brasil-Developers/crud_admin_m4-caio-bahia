@@ -1,40 +1,17 @@
 # User e Courses + Permissão de Administrador
 
-# Introdução
+## **Rotas - /users e /login**
 
-A empresa que você trabalha precisa criar um MVP (Minimum Viable Product) de uma API que faz o controle de usuários e cursos em que esses usuários serão matriculados. Essa API também precisa ter um controle de acessos, onde alguns recursos podem ser acessados apenas por usuários que fizeram login na aplicação, e outros recursos apenas usuários que fizeram login e tem permissões de administrador podem acessar.
+## Endpoints
 
-Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o que está sendo requisitado a seguir.
-
-# Regras da entrega
-
-**A entrega deve seguir as seguintes regras:**
-
-- O código deve estar em **_TypeScript_**, caso não esteja a entrega será zerada;
-- Deverá ser utilizado um banco de dados **_postgres_** para a elaboração da API;
-- O nome da tabela, das colunas e demais especificações, devem ser **_seguidas à risca_**. Caso tenha divergência, será descontado nota;
-  - Tenha muita atenção sobre o nome das chaves nos objetos de entrada e saída de cada requisição;
-- Na raiz do diretório deve-se conter uma pasta nomeada sql, com dois arquivos:
-  - createTables.sql: contendo as queries de criação e inserção das tabelas;
-  - diagram.png/jpg: um arquivo .png ou .jpg contendo o diagrama da tabela;
-- caso o arquivo createTables.sql não exista, a entrega será zerada.
-
-**Essa entrega possui testes automatizados, portanto:**
-
-- É necessário executar um **npm install** assim que fizer o clone do repositório para que as depedências dos testes sejam instaladas.
-- É necessário criar um banco de dados separado para a execução dos testes.
-  - Faça a criação do banco de testes e coloque os dados de conexão dele nas variáveis de ambiente que contém o indicador **_TEST_** no nome, assim sua aplicação vai saber em qual banco deve se conectar no momento de executar os testes, evitando inconsistência nos dados.
-- Para que os testes possam ser executados, existe um script de limpeza do banco que utiliza as queries do arquivo **createTables.sql** para ser executado, por isso é importante seguir as orientações sobre subdiretório sql e seus arquivos à risca.
-
-  - Caso o subdiretório sql e o arquivo createTables.sql não estejam com os nomes corretos ou no caminho correto os testes falharão, pois não será possível encontrar as queries a serem executadas;
-  - Caso o nome de alguma tabela, tipo ou coluna não esteja de acordo com o esperado, os testes também falharão.
-
-- A organização dos demais arquivos e pastas deve seguir o que foi visto previamente.
-- Todos os pacotes necessários para desenvolver a aplicação devem ser instalados, já que apenas os pacotes de teste foram incluídos no repositório.
+| Método | Endpoint           | Responsabilidade                              |
+| ------ | ------------------ | --------------------------------------------- |
+| POST   | /users             | Cadastrar um novo usuário                     |
+| POST   | /login             | Criar o token de autenticação para um usuário |
+| GET    | /users             | Listar todos os usuários                      |
+| GET    | /users/:id/courses | Listar todos os cursos de um usuário          |
 
 #
-
-## **Tabelas do banco de dados**
 
 ### **Tabela users**
 
@@ -75,18 +52,41 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
 #
 
-## **Rotas - /users e /login**
+# Introdução
 
-## Endpoints
+A empresa que você trabalha precisa criar um MVP (Minimum Viable Product) de uma API que faz o controle de usuários e cursos em que esses usuários serão matriculados. Essa API também precisa ter um controle de acessos, onde alguns recursos podem ser acessados apenas por usuários que fizeram login na aplicação, e outros recursos apenas usuários que fizeram login e tem permissões de administrador podem acessar.
 
-| Método | Endpoint           | Responsabilidade                              |
-| ------ | ------------------ | --------------------------------------------- |
-| POST   | /users             | Cadastrar um novo usuário                     |
-| POST   | /login             | Criar o token de autenticação para um usuário |
-| GET    | /users             | Listar todos os usuários                      |
-| GET    | /users/:id/courses | Listar todos os cursos de um usuário          |
+Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o que está sendo requisitado a seguir.
+
+# Regras da entrega
+
+**A entrega deve seguir as seguintes regras:**
+
+- O código deve estar em **_TypeScript_**, caso não esteja a entrega será zerada;
+- Deverá ser utilizado um banco de dados **_postgres_** para a elaboração da API;
+- O nome da tabela, das colunas e demais especificações, devem ser **_seguidas à risca_**. Caso tenha divergência, será descontado nota;
+  - Tenha muita atenção sobre o nome das chaves nos objetos de entrada e saída de cada requisição;
+- Na raiz do diretório deve-se conter uma pasta nomeada sql, com dois arquivos:
+  - createTables.sql: contendo as queries de criação e inserção das tabelas;
+  - diagram.png/jpg: um arquivo .png ou .jpg contendo o diagrama da tabela;
+- caso o arquivo createTables.sql não exista, a entrega será zerada.
+
+**Essa entrega possui testes automatizados, portanto:**
+
+- É necessário executar um **npm install** assim que fizer o clone do repositório para que as depedências dos testes sejam instaladas.
+- É necessário criar um banco de dados separado para a execução dos testes.
+  - Faça a criação do banco de testes e coloque os dados de conexão dele nas variáveis de ambiente que contém o indicador **_TEST_** no nome, assim sua aplicação vai saber em qual banco deve se conectar no momento de executar os testes, evitando inconsistência nos dados.
+- Para que os testes possam ser executados, existe um script de limpeza do banco que utiliza as queries do arquivo **createTables.sql** para ser executado, por isso é importante seguir as orientações sobre subdiretório sql e seus arquivos à risca.
+
+  - Caso o subdiretório sql e o arquivo createTables.sql não estejam com os nomes corretos ou no caminho correto os testes falharão, pois não será possível encontrar as queries a serem executadas;
+  - Caso o nome de alguma tabela, tipo ou coluna não esteja de acordo com o esperado, os testes também falharão.
+
+- A organização dos demais arquivos e pastas deve seguir o que foi visto previamente.
+- Todos os pacotes necessários para desenvolver a aplicação devem ser instalados, já que apenas os pacotes de teste foram incluídos no repositório.
 
 #
+
+## **Tabelas do banco de dados**
 
 ## Regras da aplicação
 
@@ -176,7 +176,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "Email already registered"
+    "message": "Email already registered"
   }
   ```
 
@@ -189,9 +189,9 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
   ```json
   // Cadastrando com admin igual a true
   {
-  	"email": "ugo",
-  	"password": 1234,
-  	"admin": true
+    "email": "ugo",
+    "password": 1234,
+    "admin": true
   }
   ```
 
@@ -202,9 +202,9 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"name": ["Required"],
-  	"email": ["Invalid email"],
-  	"password": ["Expected string, received number"]
+    "name": ["Required"],
+    "email": ["Invalid email"],
+    "password": ["Expected string, received number"]
   }
   ```
 
@@ -245,8 +245,8 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"email": "ugo@kenzie.com.br",
-  	"password": "1234"
+    "email": "ugo@kenzie.com.br",
+    "password": "1234"
   }
   ```
 
@@ -273,7 +273,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "Wrong email/password"
+    "message": "Wrong email/password"
   }
   ```
 
@@ -285,8 +285,8 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"email": "ugo",
-  	"password": 1234
+    "email": "ugo",
+    "password": 1234
   }
   ```
 
@@ -297,8 +297,8 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"email": ["Invalid email"],
-  	"password": ["Expected string, received number"]
+    "email": ["Invalid email"],
+    "password": ["Expected string, received number"]
   }
   ```
 
@@ -343,18 +343,18 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   [
-  	{
-  		"id": 1,
-  		"name": "Ugo",
-  		"email": "ugo@kenzie.com.br",
-  		"admin": true
-  	},
-  	{
-  		"id": 2,
-  		"name": "Lucas",
-  		"email": "lucas@kenzie.com.br",
-  		"admin": false
-  	}
+    {
+      "id": 1,
+      "name": "Ugo",
+      "email": "ugo@kenzie.com.br",
+      "admin": true
+    },
+    {
+      "id": 2,
+      "name": "Lucas",
+      "email": "lucas@kenzie.com.br",
+      "admin": false
+    }
   ]
   ```
 
@@ -367,7 +367,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "Missing bearer token"
+    "message": "Missing bearer token"
   }
   ```
 
@@ -393,7 +393,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "Insufficient permission"
+    "message": "Insufficient permission"
   }
   ```
 
@@ -443,22 +443,22 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   [
-  	{
-  		"couseId": 1,
-  		"courseName": "Frontend",
-  		"courseDescription": "HTML, CSS e JavaScript",
-  		"userActiveInCourse": true,
-  		"userId": 1,
-  		"userName": "Ugo"
-  	},
-  	{
-  		"couseId": 2,
-  		"courseName": "React",
-  		"courseDescription": "Biblioteca React para construção de frontend",
-  		"userActiveInCourse": false,
-  		"userId": 1,
-  		"userName": "Ugo"
-  	}
+    {
+      "couseId": 1,
+      "courseName": "Frontend",
+      "courseDescription": "HTML, CSS e JavaScript",
+      "userActiveInCourse": true,
+      "userId": 1,
+      "userName": "Ugo"
+    },
+    {
+      "couseId": 2,
+      "courseName": "React",
+      "courseDescription": "Biblioteca React para construção de frontend",
+      "userActiveInCourse": false,
+      "userId": 1,
+      "userName": "Ugo"
+    }
   ]
   ```
 
@@ -471,7 +471,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "Missing bearer token"
+    "message": "Missing bearer token"
   }
   ```
 
@@ -497,7 +497,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "No course found"
+    "message": "No course found"
   }
   ```
 
@@ -510,7 +510,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "Insufficient permission"
+    "message": "Insufficient permission"
   }
   ```
 
@@ -573,8 +573,8 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"name": "Frontend",
-  	"description": "HTML, CSS e JavaScript"
+    "name": "Frontend",
+    "description": "HTML, CSS e JavaScript"
   }
   ```
 
@@ -585,9 +585,9 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"id": 1,
-  	"name": "Frontend",
-  	"description": "HTML, CSS e JavaScript"
+    "id": 1,
+    "name": "Frontend",
+    "description": "HTML, CSS e JavaScript"
   }
   ```
 
@@ -599,7 +599,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"description": 1234
+    "description": 1234
   }
   ```
 
@@ -610,8 +610,8 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"name": ["Required"],
-  	"description": ["Expected string, received number"]
+    "name": ["Required"],
+    "description": ["Expected string, received number"]
   }
   ```
 
@@ -624,7 +624,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "Missing bearer token"
+    "message": "Missing bearer token"
   }
   ```
 
@@ -650,7 +650,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "Insufficient permission"
+    "message": "Insufficient permission"
   }
   ```
 
@@ -677,16 +677,16 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   [
-  	{
-  		"id": 1,
-  		"name": "Frontend",
-  		"description": "HTML, CSS e JavaScript"
-  	},
-  	{
-  		"id": 2,
-  		"name": "React",
-  		"description": "Frontend com a biblioteca React"
-  	}
+    {
+      "id": 1,
+      "name": "Frontend",
+      "description": "HTML, CSS e JavaScript"
+    },
+    {
+      "id": 2,
+      "name": "React",
+      "description": "Frontend com a biblioteca React"
+    }
   ]
   ```
 
@@ -739,7 +739,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "User successfully vinculed to course"
+    "message": "User successfully vinculed to course"
   }
   ```
 
@@ -752,7 +752,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "User/course not found"
+    "message": "User/course not found"
   }
   ```
 
@@ -765,7 +765,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "Missing bearer token"
+    "message": "Missing bearer token"
   }
   ```
 
@@ -791,7 +791,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "Insufficient permission"
+    "message": "Insufficient permission"
   }
   ```
 
@@ -854,7 +854,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "User/course not found"
+    "message": "User/course not found"
   }
   ```
 
@@ -867,7 +867,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "Missing bearer token"
+    "message": "Missing bearer token"
   }
   ```
 
@@ -893,7 +893,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "Insufficient permission"
+    "message": "Insufficient permission"
   }
   ```
 
@@ -938,22 +938,22 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   [
-  	{
-  		"userId": 1,
-  		"userName": "Ugo",
-  		"couseId": 1,
-  		"courseName": "Frontend",
-  		"courseDescription": "HTML, CSS e JavaScript",
-  		"userActiveInCourse": true
-  	},
-  	{
-  		"userId": 2,
-  		"userName": "Lucas",
-  		"couseId": 1,
-  		"courseName": "Frontend",
-  		"courseDescription": "HTML, CSS e JavaScript",
-  		"userActiveInCourse": true
-  	}
+    {
+      "userId": 1,
+      "userName": "Ugo",
+      "couseId": 1,
+      "courseName": "Frontend",
+      "courseDescription": "HTML, CSS e JavaScript",
+      "userActiveInCourse": true
+    },
+    {
+      "userId": 2,
+      "userName": "Lucas",
+      "couseId": 1,
+      "courseName": "Frontend",
+      "courseDescription": "HTML, CSS e JavaScript",
+      "userActiveInCourse": true
+    }
   ]
   ```
 
@@ -966,7 +966,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "Missing bearer token"
+    "message": "Missing bearer token"
   }
   ```
 
@@ -992,6 +992,6 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
   ```json
   {
-  	"message": "Insufficient permission"
+    "message": "Insufficient permission"
   }
   ```
