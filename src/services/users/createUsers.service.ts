@@ -4,8 +4,6 @@ import { hash } from "bcryptjs"
 import { client } from "../../database"
 import { userWithoutPassword } from "../../schemas/user.schema"
 
-// userData = payload
-
 const createUserService = async (userData: userRequest): Promise<userReturn> => {
   userData.password = await hash(userData.password, 10)
 

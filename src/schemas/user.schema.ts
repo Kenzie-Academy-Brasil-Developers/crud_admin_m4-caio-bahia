@@ -5,12 +5,11 @@ const userSchema = z.object({
   name: z.string().min(1).max(50),
   email: z.string().email().min(1).max(50),
   password: z.string().max(120).min(1),
-  admin: z.boolean().default(false)
+  admin: z.boolean().default(false).optional()
 })
 
 const createUserSchema = userSchema.omit({
-  id: true,
-  active: true
+  id: true
 })
 
 const userWithoutPassword = userSchema.omit({

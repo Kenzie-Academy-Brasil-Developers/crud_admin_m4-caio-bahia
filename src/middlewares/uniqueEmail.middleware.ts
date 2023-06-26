@@ -16,7 +16,7 @@ const uniqueEmail = async (
   const query: userResult = await client.query('SELECT * FROM "users" WHERE "email" = $1;', [email])
 
   if (query.rowCount != 0) {
-    return res.status(409).json("Email already exists!")
+    return res.status(409).json({ message: "Email already exists!" })
   }
 
   return next()

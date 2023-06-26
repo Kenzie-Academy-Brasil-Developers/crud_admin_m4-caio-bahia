@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express"
 import { AppError } from "../errors"
 import { verify } from "jsonwebtoken"
 
-export const ensureTokenIsValidMiddleware = (
+export const verifyIfUserisAdmin = (
   req: Request,
   res: Response,
   next: NextFunction
@@ -16,9 +16,9 @@ export const ensureTokenIsValidMiddleware = (
   token = token.split(" ")[1]
 
   verify(token, process.env.SECRET_KEY!, (error, decoded: any) => {
-    console.log(decoded)
-    if (error) {
-      throw new AppError(error.message, 401)
+    console.log(decoded.admin)
+    if (decoded.admin === false) {
+      throw new AppError("Insufficient permission", 401)
     }
     res.locals = { ...res.locals, decoded, admin: decoded.admin }
   })

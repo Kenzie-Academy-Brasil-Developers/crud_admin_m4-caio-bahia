@@ -1,4 +1,5 @@
 import { client } from "../../database"
+import "express-async-errors"
 
 export const addUserToCourseService = async (userId: string, courseId: string): Promise<Object> => {
   const QueryString: string = `

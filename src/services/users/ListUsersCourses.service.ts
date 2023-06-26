@@ -1,5 +1,6 @@
 import { client } from "../../database"
 import { AppError } from "../../errors"
+import "express-async-errors"
 
 export const listUserCoursesServices = async (userId: string) => {
   const QueryString: string = `
@@ -18,9 +19,10 @@ export const listUserCoursesServices = async (userId: string) => {
         WHERE u.id = $1
     `
   const QueryResult = await client.query(QueryString, [userId])
+  console.log(QueryResult.rows)
 
   if (QueryResult.rowCount === 0) {
-    throw new AppError("No course found on this user!", 404)
+    throw new AppError("No course found on this user", 404)
   }
 
   return QueryResult.rows

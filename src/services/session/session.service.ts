@@ -23,9 +23,13 @@ export const sessionService = async (sessionData: SessionRequest): Promise<strin
     throw new AppError("Wrong email/password", 401)
   }
 
-  const token: string = sign({ email: queryResult.rows[0].email }, process.env.SECRET_KEY!, {
-    expiresIn: process.env.EXPIRES_IN,
-    subject: queryResult.rows[0].id.toString()
-  })
+  const token: string = sign(
+    { email: queryResult.rows[0].email, admin: queryResult.rows[0].admin },
+    process.env.SECRET_KEY!,
+    {
+      expiresIn: process.env.EXPIRES_IN,
+      subject: queryResult.rows[0].id.toString()
+    }
+  )
   return token
 }
