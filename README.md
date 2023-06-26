@@ -5,11 +5,11 @@
 ## Endpoints
 
 | Método | Endpoint           | Responsabilidade                              |
-| ------ | ------------------ | --------------------------------------------- |
-| POST   | /users             | Cadastrar um novo usuário                     |X
-| POST   | /login             | Criar o token de autenticação para um usuário |X
+| ------ | ------------------ | --------------------------------------------- | ------------ |
+| POST   | /users             | Cadastrar um novo usuário                     | X            |
+| POST   | /login             | Criar o token de autenticação para um usuário | X            |
 | GET    | /users             | Listar todos os usuários                      |
-| GET    | /users/:id/courses | Listar todos os cursos de um usuário          |X(need test)
+| GET    | /users/:id/courses | Listar todos os cursos de um usuário          | X(need test) |
 
 #
 
@@ -18,10 +18,10 @@
 ## Endpoints
 
 | Método | Endpoint                         | Responsabilidade                                  |
-| ------ | -------------------------------- | ------------------------------------------------- |
-| POST   | /courses                         | Cadastrar um novo curso                           |
+| ------ | -------------------------------- | ------------------------------------------------- | --- |
+| POST   | /courses                         | Cadastrar um novo curso                           | X   |
 | GET    | /courses                         | Listar todos os cursos                            |
-| POST   | /courses/:courseId/users/:userId | Matricular o usuário em um curso                  |
+| POST   | /courses/:courseId/users/:userId | Matricular o usuário em um curso                  | X   |
 | DELETE | /courses/:courseId/users/:userId | Setar matrícula para false do usuário em um curso |
 | GET    | /courses/:id/users               | Listar todos os usuários matriculados em um curso |
 
@@ -527,8 +527,6 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
   ```
 
 #
-
-
 
 ### **POST /courses**
 
