@@ -4,11 +4,9 @@ import { createCourseService } from "../services/courses/createCourse.service"
 import { addUserToCourseService } from "../services/courses/addUserToCourse.service"
 import { softDeleteUserFromCourseService } from "../services/courses/softDeleteUserFromCourse.service"
 import { client } from "../database"
+import { listUserCoursesServices } from "../services/users/ListUsersCourses.service"
+import { listCoursesUsersServices } from "../services/courses/listCoursesUsersServices.service"
 
-const coursesDeleteController = async (req: Request, res: Response): Promise<Response> => {
-  await deleteUserCourseService(req.params.id)
-  return res.status(204).json()
-}
 const createCourseController = async (req: Request, res: Response): Promise<Response> => {
   const newCourse = await createCourseService(req.body)
   return res.status(201).json(newCourse)
@@ -34,9 +32,15 @@ const getAllCoursesController = async (req: Request, res: Response): Promise<Res
   return res.status(201).json(QueryResultAll.rows)
 }
 
+const listCourseUsersController = async (req: Request, res: Response): Promise<Response> => {
+  const courseUsers = await listCoursesUsersServices(req.params.courseId)
+  return res.status(200).json(courseUsers)
+}
+
 export {
   createCourseController,
   addUserToCourseController,
   softDeleteUserFromCourseController,
-  getAllCoursesController
+  getAllCoursesController,
+  listCourseUsersController
 }

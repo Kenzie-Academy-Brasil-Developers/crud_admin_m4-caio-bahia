@@ -16,7 +16,6 @@ export const ensureTokenIsValidMiddleware = (
   token = token.split(" ")[1]
 
   verify(token, process.env.SECRET_KEY!, (error, decoded: any) => {
-    console.log(decoded)
     if (error) {
       throw new AppError(error.message, 401)
     }

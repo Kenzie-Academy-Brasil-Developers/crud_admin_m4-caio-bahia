@@ -19,5 +19,10 @@ userRouter.post(
   createUserController
 )
 
-userRouter.get("/:id/courses", ensureTokenIsValidMiddleware, listUserCoursesController)
+userRouter.get(
+  "/:id/courses",
+  ensureTokenIsValidMiddleware,
+  verifyIfUserisAdmin,
+  listUserCoursesController
+)
 userRouter.get("", ensureTokenIsValidMiddleware, verifyIfUserisAdmin, listAllUsersController)

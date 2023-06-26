@@ -18,7 +18,7 @@ const listUserCoursesController = async (req: Request, res: Response): Promise<R
 }
 
 const listAllUsersController = async (req: Request, res: Response): Promise<Response> => {
-  const QueryStringAll: string = `SELECT * FROM users`
+  const QueryStringAll: string = `SELECT id,name,email,admin from users ;`
   const QueryResultAll = await client.query(QueryStringAll)
 
   return res.status(201).json(QueryResultAll.rows)

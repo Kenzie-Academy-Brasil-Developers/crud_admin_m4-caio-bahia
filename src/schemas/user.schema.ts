@@ -16,4 +16,9 @@ const userWithoutPassword = userSchema.omit({
   password: true
 })
 
-export { userSchema, createUserSchema, userWithoutPassword }
+const userWithoutAdmAndPassword = userSchema.omit({
+  password: true,
+  admin: true
+})
+
+export { userSchema, createUserSchema, userWithoutPassword, userWithoutAdmAndPassword }

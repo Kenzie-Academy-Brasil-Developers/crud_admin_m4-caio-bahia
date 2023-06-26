@@ -2,7 +2,7 @@ import format from "pg-format"
 import { userRequest, userResult, userReturn } from "../../interfaces/user.interfaces"
 import { hash } from "bcryptjs"
 import { client } from "../../database"
-import { userWithoutPassword } from "../../schemas/user.schema"
+import { userWithoutAdmAndPassword, userWithoutPassword } from "../../schemas/user.schema"
 
 const createUserService = async (userData: userRequest): Promise<userReturn> => {
   userData.password = await hash(userData.password, 10)
@@ -19,6 +19,9 @@ const createUserService = async (userData: userRequest): Promise<userReturn> => 
 
   const QueryResult: userResult = await client.query(QueryString)
 
+  if (QueryResult.rows[0].admin === false) {
+    return userWithoutAdmAndPassword.parse(QueryResult.rows[0])
+  }
   return userWithoutPassword.parse(QueryResult.rows[0])
 }
 
