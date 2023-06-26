@@ -9,5 +9,12 @@ const userSchema = z.object({
 })
 
 const createUserSchema = userSchema.omit({
-  id: true
+  id: true,
+  active: true
 })
+
+const userWithoutPassword = userSchema.omit({
+  password: true
+})
+
+export { userSchema, createUserSchema, userWithoutPassword }
