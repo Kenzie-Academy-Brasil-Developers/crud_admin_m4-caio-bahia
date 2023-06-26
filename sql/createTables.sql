@@ -4,13 +4,13 @@ create table if not exists "users"(
 "email" VARCHAR(50) not null unique,
 "password": VARCHAR(120) not null,
 "admin": BOOLEAN NOT NULL DEFAULT  FALSE 
-)
+);
 
 create table if not exists "courses"(
 "id" SERIAL primary key,
 "name" VARCHAR(50) not null,
 "description" TEXT not null
-)
+);
 
 create table if not exists "usersCourses"(
 "id" SERIAL primary key,
@@ -21,5 +21,4 @@ FOREIGN KEY("userId")
 "courseId": INTEGER NOT NULL,
 FOREIGN KEY("courseId")
     REFERENCES "courses"(id),
-
-)
+);
