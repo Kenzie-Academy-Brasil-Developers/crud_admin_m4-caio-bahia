@@ -6,12 +6,24 @@
 
 | Método | Endpoint           | Responsabilidade                              |
 | ------ | ------------------ | --------------------------------------------- |
-| POST   | /users             | Cadastrar um novo usuário                     |
-| POST   | /login             | Criar o token de autenticação para um usuário |
+| POST   | /users             | Cadastrar um novo usuário                     |X
+| POST   | /login             | Criar o token de autenticação para um usuário |X
 | GET    | /users             | Listar todos os usuários                      |
-| GET    | /users/:id/courses | Listar todos os cursos de um usuário          |
+| GET    | /users/:id/courses | Listar todos os cursos de um usuário          |X(need test)
 
 #
+
+## **Rota - /courses**
+
+## Endpoints
+
+| Método | Endpoint                         | Responsabilidade                                  |
+| ------ | -------------------------------- | ------------------------------------------------- |
+| POST   | /courses                         | Cadastrar um novo curso                           |
+| GET    | /courses                         | Listar todos os cursos                            |
+| POST   | /courses/:courseId/users/:userId | Matricular o usuário em um curso                  |
+| DELETE | /courses/:courseId/users/:userId | Setar matrícula para false do usuário em um curso |
+| GET    | /courses/:id/users               | Listar todos os usuários matriculados em um curso |
 
 ### **Tabela users**
 
@@ -516,17 +528,7 @@ Você foi o desenvolvedor selecionado para implementar o MVP levando em conta o 
 
 #
 
-## **Rota - /courses**
 
-## Endpoints
-
-| Método | Endpoint                         | Responsabilidade                                  |
-| ------ | -------------------------------- | ------------------------------------------------- |
-| POST   | /courses                         | Cadastrar um novo curso                           |
-| GET    | /courses                         | Listar todos os cursos                            |
-| POST   | /courses/:courseId/users/:userId | Matricular o usuário em um curso                  |
-| DELETE | /courses/:courseId/users/:userId | Setar matrícula para false do usuário em um curso |
-| GET    | /courses/:id/users               | Listar todos os usuários matriculados em um curso |
 
 ### **POST /courses**
 

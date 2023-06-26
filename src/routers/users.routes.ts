@@ -12,6 +12,7 @@ userRouter.post(
   uniqueEmail,
   ensureDataIsValidMiddleware(createUserSchema),
   createUserController
-)
+) //	Cadastrar um novo usuário
 
-userRouter.get("/:id/courses", ensureTokenIsValidMiddleware, listUserCoursesController)
+userRouter.get("/:id/courses", ensureTokenIsValidMiddleware, listUserCoursesController) //Listar todos os cursos de um usuário
+userRouter.get("") //	Listar todos os usuários

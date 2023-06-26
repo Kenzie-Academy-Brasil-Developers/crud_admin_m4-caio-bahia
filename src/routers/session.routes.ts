@@ -5,4 +5,4 @@ import { sessionSchema } from "../schemas/session.schemas"
 
 export const sessionRouter: Router = Router()
 
-sessionRouter.post("", ensureDataIsValidMiddleware(sessionSchema), sessionController)
+sessionRouter.post("", ensureDataIsValidMiddleware(sessionSchema), sessionController) //Criar o token de autenticação para um usuário
