@@ -10,7 +10,7 @@ export const listUserCoursesServices = async (userId: string) => {
         c."id" "courseId",
         c."name" "courseName",
         c."description" "courseDescription",
-        uc."active" "userActiveOnCourse",
+        uc."active" "userActiveInCourse",
         u."id" "userId",
         u."name" "userName"
     FROM users u 
