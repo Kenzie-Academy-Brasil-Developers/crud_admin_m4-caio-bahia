@@ -17,6 +17,7 @@ export const ensureTokenIsValidMiddleware = (
 
   verify(token, process.env.SECRET_KEY!, (error, decoded: any) => {
     if (error) {
+      console.log("ocorreu erro")
       throw new AppError(error.message, 401)
     }
     res.locals = { ...res.locals, decoded, admin: decoded.admin }

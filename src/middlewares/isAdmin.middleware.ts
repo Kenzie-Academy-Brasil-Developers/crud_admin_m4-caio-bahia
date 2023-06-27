@@ -16,6 +16,9 @@ export const verifyIfUserisAdmin = (
   token = token.split(" ")[1]
 
   verify(token, process.env.SECRET_KEY!, (error, decoded: any) => {
+    if (error) {
+      throw new AppError(error.message, 401)
+    }
     if (decoded.admin === false) {
       throw new AppError("Insufficient permission", 403)
     }
