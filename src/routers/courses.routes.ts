@@ -23,7 +23,7 @@ coursesRouter.post(
   verifyIfUserisAdmin,
   createCourseController
 )
-coursesRouter.get("", ensureTokenIsValidMiddleware, verifyIfUserisAdmin, getAllCoursesController)
+coursesRouter.get("", getAllCoursesController)
 coursesRouter.post(
   "/:courseId/users/:userId",
   ensureTokenIsValidMiddleware,

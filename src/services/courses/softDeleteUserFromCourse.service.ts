@@ -5,6 +5,26 @@ export const softDeleteUserFromCourseService = async (
   userId: string,
   courseId: string
 ): Promise<void> => {
+  const CourseExists = `
+  SELECT * FROM courses
+  where id= $1;
+
+  `
+
+  const CourseExistsResult = await client.query(CourseExists, [courseId])
+  if (CourseExistsResult.rowCount === 0) {
+    throw new AppError("User/course not found", 404)
+  }
+
+  const userExists = `
+  SELECT * FROM users
+  where id= $1;
+  `
+  const userExistsResult = await client.query(userExists, [userId])
+  if (userExistsResult.rowCount === 0) {
+    throw new AppError("User/course not found", 404)
+  }
+
   const QueryString = `
   UPDATE "userCourses"
   SET active = false
@@ -13,8 +33,4 @@ export const softDeleteUserFromCourseService = async (
 `
 
   const QueryResult = await client.query(QueryString, [userId, courseId])
-
-  if (QueryResult.rowCount === 0) {
-    throw new AppError("User/course not found", 404)
-  }
 }
