@@ -24,8 +24,9 @@ export const listUserCoursesServices = async (userId: string) => {
   const QueryResult: userResult = await client.query(QueryString, [userId])
 
   if (QueryResult.rowCount === 0) {
-    throw new AppError("No course found on this user", 404)
+    throw new AppError("No course found", 404)
   }
 
-  return userWithoutPassword.parse(QueryResult.rows)
+  console.log(QueryResult.rows)
+  return QueryResult.rows
 }
