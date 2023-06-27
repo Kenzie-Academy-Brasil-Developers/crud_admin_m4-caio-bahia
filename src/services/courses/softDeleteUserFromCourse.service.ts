@@ -5,7 +5,7 @@ export const softDeleteUserFromCourseService = async (
   courseId: string
 ): Promise<void> => {
   const QueryString = `
-  UPDATE "usersCourses"
+  UPDATE "userCourses"
   SET active = false
     WHERE "userId" = $1
     AND "courseId" = $2

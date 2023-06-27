@@ -29,7 +29,7 @@ const getAllCoursesController = async (req: Request, res: Response): Promise<Res
   const QueryStringAll: string = `SELECT * FROM courses`
   const QueryResultAll = await client.query(QueryStringAll)
 
-  return res.status(201).json(QueryResultAll.rows)
+  return res.status(200).json(QueryResultAll.rows)
 }
 
 const listCourseUsersController = async (req: Request, res: Response): Promise<Response> => {

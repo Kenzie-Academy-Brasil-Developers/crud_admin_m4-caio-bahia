@@ -12,7 +12,7 @@ create table if not exists "courses"(
 "description" TEXT not null
 );
 
-create table if not exists "usersCourses"(
+create table if not exists "userCourses"(
 "id" SERIAL primary key,
 "active" BOOLEAN NOT NULL DEFAULT TRUE,
 "userId" INTEGER NOT NULL,
@@ -20,5 +20,5 @@ FOREIGN KEY("userId")
     REFERENCES "users"(id),
 "courseId" INTEGER NOT NULL,
 FOREIGN KEY("courseId")
-    REFERENCES "courses"(id),
+    REFERENCES "courses"(id)
 );

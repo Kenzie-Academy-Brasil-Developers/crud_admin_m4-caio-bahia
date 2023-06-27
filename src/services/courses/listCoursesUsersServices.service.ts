@@ -13,7 +13,7 @@ export const listCoursesUsersServices = async (courseId: string) => {
   c."description" "courseDescription",
   uc."active" "userActiveOnCourse"
   FROM courses c 
- JOIN "usersCourses" uc
+ JOIN "userCourses" uc
     ON c.id = uc."courseId"
 JOIN users u  
       ON u.id = uc."userId"

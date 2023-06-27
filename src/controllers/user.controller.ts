@@ -21,7 +21,7 @@ const listAllUsersController = async (req: Request, res: Response): Promise<Resp
   const QueryStringAll: string = `SELECT id,name,email,admin from users ;`
   const QueryResultAll = await client.query(QueryStringAll)
 
-  return res.status(201).json(QueryResultAll.rows)
+  return res.status(200).json(QueryResultAll.rows)
 }
 
 export {
