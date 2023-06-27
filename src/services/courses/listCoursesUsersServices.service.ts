@@ -21,7 +21,6 @@ JOIN users u
     
     `
   const QueryResult = await client.query(QueryString, [courseId])
-  console.log(QueryResult.rowCount)
 
   if (QueryResult.rowCount === 0) {
     throw new AppError("No Users in this Course", 404)

@@ -19,9 +19,9 @@ const createUserService = async (userData: userRequest): Promise<userReturn> => 
 
   const QueryResult: userResult = await client.query(QueryString)
 
-  if (QueryResult.rows[0].admin === false) {
-    return userWithoutAdmAndPassword.parse(QueryResult.rows[0])
-  }
+  // if (QueryResult.rows[0].admin === false) {
+  //   return userWithoutAdmAndPassword.parse(QueryResult.rows[0])
+  // }
   return userWithoutPassword.parse(QueryResult.rows[0])
 }
 

@@ -27,6 +27,5 @@ export const listUserCoursesServices = async (userId: string) => {
     throw new AppError("No course found", 404)
   }
 
-  console.log(QueryResult.rows)
   return QueryResult.rows
 }
